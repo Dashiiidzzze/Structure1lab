@@ -8,13 +8,13 @@ using namespace std;
 
 int QueryParsing(const string& filename, const string& query) {
     MyVector<string>* words = Split(query, ' ');
-    cout << *words << endl;
+    //cout << *words << endl;
     if (words->data[0][0] == 'M') {
         MasQuery(*words, filename);
     } else if (words->data[0][0] == 'L' && words->data[0][1] == 'F') {
         FListQuery(*words, filename);
-    }  else if (words->data[0][0] == 'L' && words->data[0][1] == 'D') {
-        //DListQuery(*words, filename);
+    } else if (words->data[0][0] == 'L' && words->data[0][1] == 'D') {
+        DListQuery(*words, filename);
     } else if (words->data[0][0] == 'Q') {
         QueueQuery(*words, filename);
     } else if (words->data[0][0] == 'S') {

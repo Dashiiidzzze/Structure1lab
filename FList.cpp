@@ -89,7 +89,6 @@ bool SearchByValue(FListNode*& head, const string& value) {
     return false;
 }
 
-// чтение ?????????????????????????????????????????????????
 
 
 FListNode* FListFromFile(string& str) {
@@ -173,35 +172,3 @@ void FListQuery(const MyVector<string>& words, const string& filename) {
         Rewrite(filename, oldStr, newStr, "list", "queue");
     }
 }
-
-
-/*
-int main() {
-    cout << 0 << endl;
-    FListNode* head = new FListNode{"apple", nullptr};
-    cout << 1 << endl;
-    //DeleteFromTail(head);
-    cout << head << endl;
-    cout << 2 << endl;
-    AddToTailFList(head, "kiwi");
-    cout << 3 << endl;
-    AddToTailFList(head, "mango");
-    cout << 4 << endl;
-    AddToTailFList(head, "pear");
-    //DeleteFromHead(head);
-    cout << 5 << endl;
-    //PrintFlist(head);
-    cout << head << endl;
-    cout << 6 << endl;
-    AddFlist(head, "das");
-    //DeleteFromTail(head);
-    cout << 7 << endl;
-    DeleteByValue(head, "ma");
-    //PrintFlist(head);
-    cout << head << endl;
-    cout << SearchByValue(head, "mago") << endl;
-    cout << 8 << endl;
-
-
-    return 0;
-}*/

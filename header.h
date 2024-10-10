@@ -37,7 +37,7 @@ string MassToString(const Massiv& vec, const string& name);
 void MasQuery(const MyVector<string>& words, const string& filename) ;
 
 
-// работа со списком
+// работа с односвязным списком
 struct FListNode {
     string value;
     FListNode* next;
@@ -55,6 +55,27 @@ bool SearchByValue(FListNode*& head, const string& value);
 FListNode* FListFromFile(string& str);
 string FListToString(FListNode* vec, const string& name);
 void FListQuery(const MyVector<string>& words, const string& filename);
+
+
+// работа с двусвязным списком
+struct DListNode {
+    DListNode* prev;
+    string value;
+    DListNode* next;
+
+    DListNode(DListNode* p = nullptr, string v = "", DListNode* n = nullptr) : prev(p), value(v), next(n) {}
+};
+
+ostream& operator << (ostream& os, DListNode* tail);
+void AddDlist(DListNode*& head, DListNode*& tail, string value);
+void AddToTailDList(DListNode*& head, DListNode*& tail, string value);
+string DeleteFromHeadDList(DListNode*& head, DListNode*& tail);
+void DeleteFromTailDList(DListNode*& head, DListNode*& tail);
+void DeleteByValueDList(DListNode*& head, DListNode*& tail, string value);
+bool SearchByValueDlist(DListNode*& head, DListNode*& tail, string value);
+void DListFromFile(string& str, DListNode*& head, DListNode*& tail);
+string DListToString(DListNode*& tail, const string& name);
+void DListQuery(const MyVector<string>& words, const string& filename);
 
 
 // работа с очередью

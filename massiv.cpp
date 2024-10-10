@@ -69,6 +69,20 @@ void ReplaceMassiv(Massiv& vec, int index, string value) {
 
 // длина массива и так работает a->len
 
+void PushAtIndex(Massiv& vec, int index, string value) {
+    if (index < 0 || index > vec.len) {
+        throw runtime_error("Index out of range");
+    }
+    if ((vec.len + 1) * 100 / vec.cap >= vec.LoadFactor) { //обновление размера массива
+        ExpansMassiv(vec);
+    }
+    for (int i = vec.len; i >= index; i--) {
+        vec.data[i + 1] = vec.data[i];
+    }
+    vec.data[index] = value;
+    vec.len++;
+}
+
 
 // создание массива, сохраненного в файле
 Massiv* MassivFromFile(string& str) {
@@ -114,6 +128,10 @@ void MasQuery(const MyVector<string>& words, const string& filename) {
     if (doing == "PUSH") { // добавление в конец
         AddMassiv(*initialArr, words.data[2]);
         cout << "-> " << words.data[2] << endl;
+        revriting = true;
+    } else if (doing == "PUSHATINDEX") {
+        PushAtIndex(*initialArr, stoi(words.data[2]), words.data[3]);
+        cout << "-> " << words.data[3] << endl;
         revriting = true;
     } else if (doing == "GETVAL") {// получение по индексу
         cout << "-> " << initialArr->data[stoi(words.data[2])] << endl;
